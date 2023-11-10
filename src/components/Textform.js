@@ -10,7 +10,12 @@ import React,{useState} from 'react'
 // console.log(useState('Enter text here2'));
 export default function Textform(props) {
   // For upperCase conversion
+  const [text,setText]=useState('');
+  const [color,setcolor]=useState('');
+  const wordCount = text.trim().split(/\s+/).length;
+  const letter=text.replace(/\s/g,'');
   
+// setwords(wordCount);
     const handleUpClick=()=>{
 
       // FIRST METHOD:-
@@ -91,8 +96,7 @@ export default function Textform(props) {
       props.showAlert("ExtraSpaces has been removed !","success");
 
     }
-    const [text,setText]=useState('');
-  const [color,setcolor]=useState('');
+   
     // setText("kjsdbuewhiue"); This is way of setting text as in a function !
   return (
     <>
@@ -115,7 +119,7 @@ export default function Textform(props) {
     <div  className={` container text-${props.mode==='primary'?'dark':'light'}`}>
     <h2>Your text summary</h2>
     {/* Want to know the number of words and number of chracter in a sentence */}
-    <p>{`${text.length==""?text.trim().split(/\s+/).length-1:text.trim().split(/\s+/).length}`}words and {text.length} chracters</p>
+    <p>{`${text.trim().length==0?0:wordCount}`}words and {letter.length} chracters</p>
     <p>You should read it in {0.08*(text.split(" ").length)} minutes</p>
     <h2>Preview</h2>
     <p ><i>{text.length>0?text:"Write something to preview"}</i></p>
